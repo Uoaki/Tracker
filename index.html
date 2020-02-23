@@ -38,7 +38,7 @@
             });
 
             kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-            kakao.maps.event.addListener(marker, 'mouseout', makeOverListener(infowindow));
+            kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
         }
 
         function makeOverListener(map, marker, infowindow) {
@@ -47,7 +47,7 @@
             };
         }
 
-        function makeOverListener(infowindow) {
+        function makeOutListener(infowindow) {
             return function() {
                 infowindow.close();
             };
