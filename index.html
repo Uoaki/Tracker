@@ -16,26 +16,42 @@
 
 		var map = new kakao.maps.Map(container, options);
 
-        var markerPosition  = new kakao.maps.LatLng(37.46686, 126.655862); 
+        var positions = [
+            {
+                content: '<div>충만교회</div>',
+                latlng: new kakao.maps.LatLng(37.466597, 126.655935)
+            },
+            {
+                content: '<div>주안교회</div>',
+                latlng: new kakao.maps.LatLng(37.457118, 126.691794)
+            }
+        ];
 
-        var marker = new kakao.maps.Marker({
-            position: markerPosition
-            clickable: true
-        });
+        for (var i = 0; i < positions.length; i++) {
+            var marker = new kakao.maps.Marker({
+                map: map,
+                position: positions[i].latlng
+            });
 
-        marker.setMap(map);
+            var infowindow = new kakao.maps.InfoWindow({
+                content: positions[i].content
+            });
 
-        var iwContent = '<div style="padding:5px;">4~5층, 14층 충만교회</div>'
-            iwRemoveable = true;
+            kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+            kakao.maps.event.addListener(marker 'mouseout', makeOverListener(infowindow));
+        }
 
-        var infowindow = new kakao.maps.InfoWindow({
-            content : iwContent
-            removable : iwRemoveable
-        });
+        function makeOverListener(map, marker, infowindow) {
+            return function() {
+                infowindow.open(map, marker);
+            };
+        }
 
-        kakao.maps.event.addListener(marker, 'click', function() {
-            infowindow.open(map, marker);
-        });
+        function makeOverListener(infowindow) {
+            return function() {
+                infowindow.close();
+            };
+        }  
 	</script>
 </body>
 </html>
