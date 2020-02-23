@@ -22,7 +22,7 @@
                 latlng: new kakao.maps.LatLng(37.466597, 126.655935)
             },
             {
-                content: '<div>주안교회</div>',
+                content: '<div>마태지파 주안교회</div>',
                 latlng: new kakao.maps.LatLng(37.457118, 126.691794)
             }
         ];
@@ -38,7 +38,7 @@
             });
 
             kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-            kakao.maps.event.addListener(marker 'mouseout', makeOverListener(infowindow));
+            kakao.maps.event.addListener(marker, 'mouseout', makeOverListener(infowindow));
         }
 
         function makeOverListener(map, marker, infowindow) {
