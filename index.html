@@ -40,41 +40,6 @@
 
 		var map = new kakao.maps.Map(container, options);
 
-        var ps = new kakao.maps.services.Places();
-
-        searchPlaces();
-
-        function searchPlaces() {
-            var keyword = document.getElementById('keyword').value;
-
-            if (!keyword.replace(/^\s+|\s+$/g, '')) {
-                alert('주소를 입력해주세요');
-                return false;
-            }
-
-            ps.keywordSearch(keyword, placesSearchCB);
-        }
-
-        function placesSearchCB(data, status) {
-            if (status === kakao.maps.services.Status.OK) {
-                displayPlaces(data);
-            } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-                
-                alert('검색 결과가 존재하지 않습니다.');
-                return;
-
-            } else if (status === kakao.maps.services.Status.ERROR) {
-
-                alert('검색 결과 중 오류가 발생했습니다.');
-                return;
-            }
-        }
-
-        function displayPlaces(places) {
-            for (var i = 0; i < places.length; i++)
-                bounds.extend(placePosition);
-            map.setBounds(bounds);
-        }
         /*
         function searchPlace() {
             var place = ("#searchplace").val();
@@ -88,7 +53,6 @@
             }
         }
         */
-
         var positions = [
             // 인천 지역 신천지 교회 및 부속시설
             {
@@ -158,6 +122,43 @@
                 infowindow.close();
             };
         }  
+
+        // 검색창
+        var ps = new kakao.maps.services.Places();
+
+        searchPlaces();
+
+        function searchPlaces() {
+            var keyword = document.getElementById('keyword').value;
+
+            if (!keyword.replace(/^\s+|\s+$/g, '')) {
+                alert('주소를 입력해주세요');
+                return false;
+            }
+
+            ps.keywordSearch(keyword, placesSearchCB);
+        }
+
+        function placesSearchCB(data, status) {
+            if (status === kakao.maps.services.Status.OK) {
+                displayPlaces(data);
+            } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+                
+                alert('검색 결과가 존재하지 않습니다.');
+                return;
+
+            } else if (status === kakao.maps.services.Status.ERROR) {
+
+                alert('검색 결과 중 오류가 발생했습니다.');
+                return;
+            }
+        }
+
+        function displayPlaces(places) {
+            for (var i = 0; i < places.length; i++)
+                bounds.extend(placePosition);
+            map.setBounds(bounds);
+        }
 	</script>
 </body>
 </html>
