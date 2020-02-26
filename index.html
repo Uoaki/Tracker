@@ -3,10 +3,37 @@
 <head>
 	<meta charset="utf-8"/>
 	<title>신천지 트래커</title>
+<style>
+.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
+.map_wrap {position:relative;width:100%;height:500px;}
+#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+.bg_white {background:#fff;}
+#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+#menu_wrap .option{text-align: center;}
+#menu_wrap .option p {margin:10px 0;}  
+#menu_wrap .option button {margin-left:5px;}
+#pagination {margin:10px auto;text-align: center;}
+#pagination a {display:inline-block;margin-right:10px;}
+#pagination .on {font-weight: bold; cursor: default;color:#777;}
+</style>
 </head>
 <body>
-    <input type="text" id="searchplace"><button onclick="searchPlace();">검색</button>
+    <!--<input type="text" id="searchplace"><button onclick="searchPlace();">검색</button>-->
+<div class="map_wrap">
 	<div id="map" style="width:100%;height:1080px;"></div>
+    <div id="menu_wrap" class="bg_white">
+        <div class="option">
+            <div>
+                <form onsubmit="searchPlaces(); return false;">
+                    주소 :
+                    <button type="submit">검색</button>
+                </form>
+            </div>
+        <hr>
+        <div id="pagination"></div>
+    </div>
+</div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b800afcb5fff661bc18c553e4b3e54df"></script>
 	<script>
 		var container = document.getElementById('map');
@@ -17,6 +44,42 @@
 
 		var map = new kakao.maps.Map(container, options);
 
+        var ps = new kakao.maps.services.Places();
+
+        searchPlaces();
+
+        function searchPlaces() {
+            var keyword = document.getElementById('keyword').value;
+
+            if (!keyword.replace(/^\s+|\s+$/g, '')) {
+                alert('주소를 입력해주세요');
+                return false;
+            }
+
+            ps.keywordSearch(keyword, placesSearchCB);
+        }
+
+        function placesSearchCB(data, status, pagination) {
+            if (status === kakao.maps.services.Status.OK) {
+                displayPlaces(data);
+            } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+                
+                alert('검색 결과가 존재하지 않습니다.');
+                return;
+
+            } else if (status === kakao.maps.services.Status.ERROR) {
+
+                alert('검색 결과 중 오류가 발생했습니다.');
+                return;
+            }
+        }
+
+        function displayPlaces(places) {
+            for (var i = 0; i < places.length; i++)
+                bounds.extend(placePosition);
+            map.setBounds(bounds);
+        }
+        /*
         function searchPlace() {
             var place = ("#searchplace").val();
             ps.keywordSearch(place, placesSearchCB);
@@ -28,6 +91,7 @@
                 map.setBounds(bounds);
             }
         }
+        */
 
         var positions = [
             // 인천 지역 신천지 교회 및 부속시설
