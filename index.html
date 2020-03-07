@@ -181,18 +181,23 @@
         
 
     function searchPlaces() {
-        var keyword = document.getElementById('keyword').outerHTML;
+        var keyword = document.getElementById('keyword').value;
+        var success = false;
 
         removeMarker();
 
         // 여기서 keyword 변수 검사
          if (keyword == "인천") {
              showMarker(positions_1);
+             success = true;
          }
         // else if (서울) {
         //     showMarker(positions_서울);
         // }
         
+        if (!success) {
+            alert('Search is wrong.');
+        }
     }
 
     function removeMarker() {
