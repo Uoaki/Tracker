@@ -196,13 +196,10 @@
         if (keyword == '인천' || keyword == '인천광역시') {
             showMarker(positions_1);
 
-            var bounds = new kakao.maps.LatLngBounds();   
-            for (i = 0; i < positions_1.length; i++) {
-                bounds.extend(positions_1[i]);
-            }
-            function setBounds() {
-                map.setBounds(bounds);
-            }
+            var point = new kakao.maps.LatLng(37.455868, 126.705551);
+            var bounds = new kakao.maps.LatLngBounds();
+            bounds.extend(points);
+            map.setBounds(bounds);
         }
         // else if (����) {
         //     showMarker(positions_2);
