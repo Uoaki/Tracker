@@ -233,8 +233,6 @@
 
     function showMarker(searchedPosArr) {
        // map.setLevel(map.getLevel() - 5);
-        var moveLatLon = new kakao.maps.LatLng(searchedPosArr[0].y, searchedPosArr[0].x);
-        map.panTo(moveLatLon);
 
         for (var i = 0; i < searchedPosArr.length; i++) {
             var marker = new kakao.maps.Marker({
@@ -251,8 +249,6 @@
 
             markers.push(marker);
         }
-
-        map.setLevel(map.getLevel() - 5);
     }
 
 
