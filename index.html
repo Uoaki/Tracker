@@ -82,6 +82,9 @@
         
         var positions_1 = [
             {
+                latlng: new kakao.maps.LatLng(37.455868, 126.705551)
+            },
+            {
                 content: '<div>충만교회</div>',
                 latlng: new kakao.maps.LatLng(37.466597, 126.655935)
             },
@@ -230,16 +233,14 @@
 
     function showMarker(searchedPosArr) {
        // map.setLevel(map.getLevel() - 5);
-        var bounds = new kakao.maps.LatLngBounds();
+        var moveLatLon = new kakao.maps.LatLng(searchedPosArr[0].y, searchedPosArr[0].x);
+        map.panTo(moveLatLon);
 
         for (var i = 0; i < searchedPosArr.length; i++) {
-            var placePosition = new kakao.maps.LatLng(searchedPosArr[i].x, searchedPosArr[i].y);
             var marker = new kakao.maps.Marker({
                 map: map,
                 position: searchedPosArr[i].latlng
             });
-
-            bounds.extend(placePosition);
 
             var infowindow = new kakao.maps.InfoWindow({
                 content: searchedPosArr[i].content
@@ -251,7 +252,6 @@
             markers.push(marker);
         }
 
-        map.setBounds(bounds);
         map.setLevel(map.getLevel() - 5);
     }
 
