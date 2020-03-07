@@ -186,8 +186,10 @@
 
         //alert(keyword);
 
-        
-
+        if (!keyword.replace(/^\s+|\s+$/g, '')) {
+            alert('키워드를 입력해주세요!');
+            return false;
+        }
         removeMarker();
 
         // 키워드 검사
