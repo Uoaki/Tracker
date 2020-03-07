@@ -186,24 +186,22 @@
 
         //alert(keyword);
 
-        var success = false;
+        
 
         removeMarker();
 
         // 키워드 검사
-         if (keyword == '인천' || '인천광역시') {
-             var options_1 = {
+        if (keyword == '인천' || '인천광역시') {
+            var options_1 = {
 			    center: new kakao.maps.LatLng(37.455868, 126.705551),
 			    level: 5
-             };
-             showMarker(positions_1);
-             success = true;
-         }
+            };
+            showMarker(positions_1);
+        }
         // else if (����) {
         //     showMarker(positions_2);
         // }
-        
-        if (!success) {
+        else {
             alert('Search is wrong.');
         }
     }
