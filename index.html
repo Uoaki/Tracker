@@ -234,12 +234,9 @@
     function showMarker(searchedPosArr) {
        // map.setLevel(map.getLevel() - 5);
         var bounds = new kakao.maps.LatLngBounds();
+        bounds.extend(searchedPosArr[0]);
 
-        
         for (var i = 0; i < searchedPosArr.length; i++) {
-
-            var placePosition = new kakao.maps.LatLng(searchedPosArr[0].y, searchedPosArr[0].x);
-            bounds.extend(placePosition);
 
             var marker = new kakao.maps.Marker({
                 map: map,
@@ -257,6 +254,7 @@
         }
 
         map.setBounds(bounds);
+        map.setLevel(map.getLevel() - 5);
     }
 
 
