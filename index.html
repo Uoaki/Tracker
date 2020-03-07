@@ -72,10 +72,19 @@
 
         var markers = [];
 
+        // 각 지방 청사 위치
+        /* var points = [
+            new kakao.maps.LatLng(37.455868, 126.705551),   // 인천 시청
+            new kakao.maps.LatLng(37.556309, 126.977942)    // 서울 시청
+        ]; */
+
         // 인천 신천지 위치
+        // 지도 위치 설정을 위하여 배열의 첫째 요소는 항상 해당 시의 시청좌표로 한다
         var positions_1 = [
-            
-           {
+            {
+                latlng: new kakao.maps.LatLng(37.455868, 126.705551)   
+            },
+            {
                 content: '<div>충만교회</div>',
                 latlng: new kakao.maps.LatLng(37.466597, 126.655935)
             },
@@ -224,6 +233,11 @@
 
     function showMarker(searchedPosArr) {
        // map.setLevel(map.getLevel() - 5);
+        var bounds = new kakao.maps.LatLngBounds();
+
+        var placePosition = new kakao.maps.LatLng(searchedPosArr[0].y, searchedPosArr[0].x);
+        bounds.extend(placePosition);
+        
         for (var i = 0; i < searchedPosArr.length; i++) {
             var marker = new kakao.maps.Marker({
                 map: map,
@@ -239,6 +253,9 @@
 
             markers.push(marker);
         }
+
+        map.setBounds(bounds);
+        map.setLevel(map.getLevel() - 5);
     }
 
 
