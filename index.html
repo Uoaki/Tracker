@@ -183,14 +183,14 @@
     function searchPlaces() {
         var keyword = document.getElementById('keyword').value;
 
-        alert(keyword);
+        //alert(keyword);
 
         var success = false;
 
         removeMarker();
 
         // 여기서 keyword 변수 검사
-         if (keyword == "인천") {
+         if (keyword == 'incheon') {
              showMarker(positions_1);
              success = true;
          }
