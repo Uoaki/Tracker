@@ -194,11 +194,11 @@
 
         // 키워드 검사
         if (keyword == '인천' || keyword == '인천광역시') {
-            map.setLevel(map.getLevel() - 5);
-            displayMap_1();
+            // map.setLevel(map.getLevel() - 5);
+            // displayMap_1();
             showMarker(positions_1);
         }
-        // else if (����) {
+        // else if (seoul) {
         //     showMarker(positions_2);
         // }
         else {
@@ -221,6 +221,7 @@
     }
 
     function showMarker(searchedPosArr) {
+        map.setLevel(map.getLevel() - 5);
         for (var i = 0; i < searchedPosArr.length; i++) {
             var marker = new kakao.maps.Marker({
                 map: map,
