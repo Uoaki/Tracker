@@ -240,7 +240,7 @@
 
             var placePosition = new kakao.maps.LatLng(searchedPosArr[0].y, searchedPosArr[0].x);
             bounds.extend(placePosition);
-            
+
             var marker = new kakao.maps.Marker({
                 map: map,
                 position: searchedPosArr[i].latlng
@@ -257,7 +257,6 @@
         }
 
         map.setBounds(bounds);
-        map.setLevel(map.getLevel() - 5);
     }
 
 
