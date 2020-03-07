@@ -203,7 +203,10 @@
         if (keyword == '인천' || keyword == '인천광역시') {
             // map.setLevel(map.getLevel() - 5);
             // displayMap_1();
+            var moveLatLon = new kakao.maps.LatLng(37.455868, 126.705551);
+            map.panTo(moveLatLon);
             showMarker(positions_1);
+            map.setLevel(map.getLevel() - 5);
         }
         // else if (seoul) {
         //     showMarker(positions_2);
@@ -218,7 +221,7 @@
             markers[i].setMap(null);
         }   
         markers = [];
-        /*map.setLevel(map.getLevel() + 5);*/
+        map.setLevel(map.getLevel() + 5);
     }
 
     /*function displayMap_1() {
