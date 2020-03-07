@@ -191,6 +191,7 @@
             return false;
         }
         removeMarker();
+        
 
         // 키워드 검사
         if (keyword == '인천' || keyword == '인천광역시') {
@@ -211,6 +212,7 @@
             markers[i].setMap(null);
         }   
         markers = [];
+        map.setLevel(map.getLevel() + 5);
     }
 
     function displayMap_1() {
