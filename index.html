@@ -70,7 +70,9 @@
 
 		var map = new kakao.maps.Map(container, options);
 
-        var positions = [
+        var markers = [];
+
+        var positions_1 = [
             
             {
                 content: '<div>異⑸쭔援먰쉶</div>',
@@ -181,15 +183,23 @@
     function searchPlaces() {
         var keyword = document.getElementById('keyword').value;
 
+        removeMarker();
+
         // 여기서 keyword 변수 검사
-        // if (인천) {
-        //     showMarker(positions_인천);
-        // }
+         if (keyword == "인천") {
+             showMarker(positions_1);
+         }
         // else if (서울) {
         //     showMarker(positions_서울);
         // }
+        
+    }
 
-        showMarker(positions);
+    function removeMarker() {
+        for ( var i = 0; i < markers.length; i++ ) {
+            markers[i].setMap(null);
+        }   
+        markers = [];
     }
 
     function showMarker(searchedPosArr) {
@@ -205,6 +215,8 @@
 
             kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
             kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+
+            markers.push(marker);
         }
     }
 
