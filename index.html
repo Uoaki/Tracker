@@ -196,7 +196,8 @@
             alert('주소를 입력해주세요!');
             return false;
         }
-        removeMarker();
+        
+        // removeMarker();
         
 
         // 키워드 검사
@@ -215,6 +216,7 @@
             alert('Search is wrong.');
             return false;
         }
+        
     }
 
     function removeMarker() {
@@ -234,6 +236,8 @@
 
     function showMarker(searchedPosArr) {
        // map.setLevel(map.getLevel() - 5);
+
+        removeMarker();
 
         for (var i = 0; i < searchedPosArr.length; i++) {
             var marker = new kakao.maps.Marker({
