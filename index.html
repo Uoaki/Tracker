@@ -84,7 +84,7 @@
         }
         */
         var positions = [
-            // ?¸ì²? ì§??—­ ?‹ ì²œì?? êµíšŒ ë°? ë¶??†?‹œ?„¤
+            // ?¸ì²? ?‹ ì²œì?? êµíšŒ ëª…ë‹¨
             {
                 content: '<div>ì¶©ë§ŒêµíšŒ</div>',
                 latlng: new kakao.maps.LatLng(37.466597, 126.655935)
@@ -110,7 +110,7 @@
                 latlng: new kakao.maps.LatLng(37.542401, 126.672000)
             },
             {
-                content: '<div>?„œ?¸ì²œêµ?šŒ</div>',
+                content: '<div>?ƒˆ?¸ì²œêµ?šŒ</div>',
                 latlng: new kakao.maps.LatLng(37.550158, 126.676594)
             },
             {
@@ -130,7 +130,7 @@
                 latlng: new kakao.maps.LatLng(37.543876, 126.720734)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(3ì¸?)</div>',
+                content: '<div>ë¶??†ê¸°ê??(3ì¸?</div>',
                 latlng: new kakao.maps.LatLng(37.538442, 126.727906)
             },
             {
@@ -198,7 +198,7 @@
             var keyword = document.getElementById('keyword').value;
 
             if (!keyword.replace(/^\s+|\s+$/g, '')) {
-                alert('ì£¼ì†Œë¥? ?…? ¥?•´ì£¼ì„¸?š”');
+                alert('ì£¼ì†Œì¸? ?ï¿½ì¸µï¿½ì¸µï¿½ï¿½ì£¼ì„¸?ï¿½ï¿½');
                 return false;
             }
 
@@ -210,12 +210,12 @@
                 displayPlaces(data);
             } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
                 
-                alert('ê²??ƒ‰ ê²°ê³¼ê°? ì¡´ì¬?•˜ì§? ?•Š?Šµ?‹ˆ?‹¤.');
+                alert('ì¸??ï¿½ï¿½ ê²°ê³¼ì¸? ì¡´ì¬?ï¿½ï¿½ì¸? ?ï¿½ì¸µï¿½ì¸µï¿½ì¸µï¿½ï¿½.');
                 return;
 
             } else if (status === kakao.maps.services.Status.ERROR) {
 
-                alert('ê²??ƒ‰ ê²°ê³¼ ì¤? ?˜¤ë¥˜ê?? ë°œìƒ?–ˆ?Šµ?‹ˆ?‹¤.');
+                alert('ì¸??ï¿½ï¿½ ê²°ê³¼ ì¸? ?ï¿½ï¿½ë¥˜ì¸µ? ë°œìƒ?ï¿½ì¸µï¿½ì¸µï¿½ì¸µï¿½ï¿½.');
                 return;
             }
         }
