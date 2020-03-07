@@ -2,9 +2,9 @@
 <html>
 <head>
 	<meta charset="utf-8"/>
-    <title>½ÅÃµÁö Æ®·¡Ä¿</title>
+    <title>ï¿½ï¿½Ãµï¿½ï¿½ Æ®ï¿½ï¿½Ä¿</title>
     <style>
-        .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'µ¸¿ò',sans-serif;font-size:12px;}
+        .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'ï¿½ï¿½ï¿½ï¿½',sans-serif;font-size:12px;}
         .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
         .map_wrap {position:relative;width:100%;height:500px;}
         #menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
@@ -43,7 +43,7 @@
         </style>
 </head>
 <body>
-    <!--<input type="text" id="searchplace"><button onclick="searchPlace();">ê²??ƒ‰</button>-->
+    <!--<input type="text" id="searchplace"><button onclick="searchPlace();">ï¿½??ï¿½ï¿½</button>-->
     <div class="map_wrap">
 	<div id="map" style="width:100%;height:1080px;"></div>
     <div id="menu_wrap" class="bg_white">
@@ -72,82 +72,83 @@
 
         var markers = [];
 
+        // ì¸ì²œ ì‹ ì²œì§€ ìœ„ì¹˜
         var positions_1 = [
             
-            {
+           {
                 content: '<div>ì¶©ë§ŒêµíšŒ</div>',
                 latlng: new kakao.maps.LatLng(37.466597, 126.655935)
             },
             {
-                content: '<div>ë§ˆíƒœì§??ŒŒ ì£¼ì•ˆêµíšŒ</div>',
+                content: '<div>ë§ˆíƒœì§€íŒŒ ì£¼ì•ˆêµíšŒ</div>',
                 latlng: new kakao.maps.LatLng(37.457118, 126.691794)
             },
             {
-                content: '<div>?–‰ë³µí•œêµíšŒ</div>',
+                content: '<div>í–‰ë³µí•œêµíšŒ</div>',
                 latlng: new kakao.maps.LatLng(37.501335, 126.721511)
             },
             {
-                content: '<div>?„ ë¯¼ì¤‘?•™êµíšŒ</div>',
+                content: '<div>ì„ ë¯¼ì¤‘ì•™êµíšŒ</div>',
                 latlng: new kakao.maps.LatLng(37.513249, 126.701882)
             },
             {
-                content: '<div>?—´ë¦°ë¬¸êµíšŒ</div>',
+                content: '<div>ì—´ë¦°ë¬¸êµíšŒ</div>',
                 latlng: new kakao.maps.LatLng(37.506402, 126.717833)
             },
             {
-                content: '<div>????˜œêµíšŒ</div>',
+                content: '<div>ì€í˜œêµíšŒ</div>',
                 latlng: new kakao.maps.LatLng(37.542401, 126.672000)
             },
             {
-                content: '<div>?ƒˆ?¸ì²œêµ?šŒ</div>',
+                content: '<div>ìƒˆì¸ì²œêµíšŒ</div>',
                 latlng: new kakao.maps.LatLng(37.550158, 126.676594)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(1, 2ì¸?)</div>',
+                content: '<div>ë¶€ì†ê¸°ê´€(1, 2ì¸µ)</div>',
                 latlng: new kakao.maps.LatLng(37.738822, 126.512525)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(3ì¸?)</div>',
+                content: '<div>ë¶€ì†ê¸°ê´€(3ì¸µ)</div>',
                 latlng: new kakao.maps.LatLng(37.542670, 126.734224)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(6ì¸?)</div>',
+                content: '<div>ë¶€ì†ê¸°ê´€(6ì¸µ)</div>',
                 latlng: new kakao.maps.LatLng(37.536637, 126.728633)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(3ì¸?)</div>',
+                content: '<div>ë¶€ì†ê¸°ê´€(3ì¸µ)</div>',
                 latlng: new kakao.maps.LatLng(37.543876, 126.720734)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(3ì¸?</div>',
+                content: '<div>ë¶€ì†ê¸°ê´€(3ì¸µ</div>',
                 latlng: new kakao.maps.LatLng(37.538442, 126.727906)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(4ì¸?)</div>',
+                content: '<div>ë¶€ì†ê¸°ê´€(4ì¸µ)</div>',
                 latlng: new kakao.maps.LatLng(37.536573, 126.722894)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(4ì¸?)</div>',
+                content: '<div>ë¶€ì†ê¸°ê´€(4ì¸µ)</div>',
                 latlng: new kakao.maps.LatLng(37.531061, 126.722991)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(6ì¸?)</div>',
+                content: '<div>ë¶€ì†ê¸°ê´€(6ì¸µ)</div>',
                 latlng: new kakao.maps.LatLng(37.536637, 126.728633)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(3ì¸?)</div>',
+                content: '<div>ë¶€ì†ê¸°ê´€(3ì¸µ)</div>',
                 latlng: new kakao.maps.LatLng(37.461149, 126.681539)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(5ì¸?)</div>',
+                content: '<div>ë¶€ì†ê¸°ê´€(5ì¸µ)</div>',
                 latlng: new kakao.maps.LatLng(37.450530, 126.688589)
             },
             {
-                content: '<div>êµíšŒ ë°? ë¶??†ê¸°ê??(2, 4, 5ì¸?)</div>',
+                content: '<div>êµíšŒ ë° ë¶€ì†ê¸°ê´€(2, 4, 5ì¸µ)</div>',
                 latlng: new kakao.maps.LatLng(37.457111, 126.691793)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(2ì¸?)</div>',
+                content: '<div>ë¶€ì†ê¸°ê´€(2ì¸µ)</div>',
                 latlng: new kakao.maps.LatLng(37.456864, 126.692375)
             }
         ];
@@ -189,13 +190,13 @@
 
         removeMarker();
 
-        // ¿©±â¼­ keyword º¯¼ö °Ë»ç
-         if (keyword == 'ÀÎÃµ') {
+        // ï¿½ï¿½ï¿½â¼­ keyword ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
+         if (keyword == 'ï¿½ï¿½Ãµ') {
              showMarker(positions_1);
              success = true;
          }
-        // else if (¼­¿ï) {
-        //     showMarker(positions_¼­¿ï);
+        // else if (ï¿½ï¿½ï¿½ï¿½) {
+        //     showMarker(positions_ï¿½ï¿½ï¿½ï¿½);
         // }
         
         if (!success) {
