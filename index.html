@@ -191,9 +191,12 @@
         removeMarker();
 
         // 키워드 검사
-         if (keyword == '인천') {
+         if (keyword == '인천' || '인천광역시') {
              showMarker(positions_1);
              success = true;
+             var options = {
+			    center: new kakao.maps.LatLng(37.455868, 126.705551),
+			    level: 5
          }
         // else if (����) {
         //     showMarker(positions_2);
@@ -205,7 +208,7 @@
     }
 
     function removeMarker() {
-        for ( var i = 0; i < markers.length; i++ ) {
+        for (var i = 0; i < markers.length; i++) {
             markers[i].setMap(null);
         }   
         markers = [];
