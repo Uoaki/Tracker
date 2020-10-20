@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-159312403-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-159312403-1');
+</script>
+
 	<meta charset="utf-8"/>
     <title>½ÅÃµÁö Æ®·¡Ä¿</title>
     <style>
@@ -43,7 +53,7 @@
         </style>
 </head>
 <body>
-    <!--<input type="text" id="searchplace"><button onclick="searchPlace();">ê²??ƒ‰</button>-->
+    <!--<input type="text" id="searchplace"><button onclick="searchPlace();">?????</button>-->
     <div class="map_wrap">
 	<div id="map" style="width:100%;height:1080px;"></div>
     <div id="menu_wrap" class="bg_white">
@@ -72,82 +82,89 @@
 
         var markers = [];
 
+        // °¢ Áö¹æ Ã»»ç À§Ä¡
+        /* var points = [
+            new kakao.maps.LatLng(37.455868, 126.705551),   // ÀÎÃµ ½ÃÃ»
+            new kakao.maps.LatLng(37.556309, 126.977942)    // ¼­¿ï ½ÃÃ»
+        ]; */
+
+        // ÀÎÃµ ½ÅÃµÁö À§Ä¡
+        
         var positions_1 = [
-            
             {
-                content: '<div>ì¶©ë§ŒêµíšŒ</div>',
+                content: '<div>Ãæ¸¸±³È¸</div>',
                 latlng: new kakao.maps.LatLng(37.466597, 126.655935)
             },
             {
-                content: '<div>ë§ˆíƒœì§??ŒŒ ì£¼ì•ˆêµíšŒ</div>',
+                content: '<div>¸¶ÅÂÁöÆÄ ÁÖ¾È±³È¸</div>',
                 latlng: new kakao.maps.LatLng(37.457118, 126.691794)
             },
             {
-                content: '<div>?–‰ë³µí•œêµíšŒ</div>',
+                content: '<div>Çàº¹ÇÑ±³È¸</div>',
                 latlng: new kakao.maps.LatLng(37.501335, 126.721511)
             },
             {
-                content: '<div>?„ ë¯¼ì¤‘?•™êµíšŒ</div>',
+                content: '<div>¼±¹ÎÁß¾Ó±³È¸</div>',
                 latlng: new kakao.maps.LatLng(37.513249, 126.701882)
             },
             {
-                content: '<div>?—´ë¦°ë¬¸êµíšŒ</div>',
+                content: '<div>¿­¸°¹®±³È¸</div>',
                 latlng: new kakao.maps.LatLng(37.506402, 126.717833)
             },
             {
-                content: '<div>????˜œêµíšŒ</div>',
+                content: '<div>ÀºÇı±³È¸</div>',
                 latlng: new kakao.maps.LatLng(37.542401, 126.672000)
             },
             {
-                content: '<div>?ƒˆ?¸ì²œêµ?šŒ</div>',
+                content: '<div>»õÀÎÃµ±³È¸</div>',
                 latlng: new kakao.maps.LatLng(37.550158, 126.676594)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(1, 2ì¸?)</div>',
+                content: '<div>ºÎ¼Ó±â°ü(1, 2Ãş)</div>',
                 latlng: new kakao.maps.LatLng(37.738822, 126.512525)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(3ì¸?)</div>',
+                content: '<div>ºÎ¼Ó±â°ü(3Ãş)</div>',
                 latlng: new kakao.maps.LatLng(37.542670, 126.734224)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(6ì¸?)</div>',
+                content: '<div>ºÎ¼Ó±â°ü(6Ãş)</div>',
                 latlng: new kakao.maps.LatLng(37.536637, 126.728633)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(3ì¸?)</div>',
+                content: '<div>ºÎ¼Ó±â°ü(3Ãş)</div>',
                 latlng: new kakao.maps.LatLng(37.543876, 126.720734)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(3ì¸?</div>',
+                content: '<div>ºÎ¼Ó±â°ü(3Ãş</div>',
                 latlng: new kakao.maps.LatLng(37.538442, 126.727906)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(4ì¸?)</div>',
+                content: '<div>ºÎ¼Ó±â°ü(4Ãş)</div>',
                 latlng: new kakao.maps.LatLng(37.536573, 126.722894)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(4ì¸?)</div>',
+                content: '<div>ºÎ¼Ó±â°ü(4Ãş)</div>',
                 latlng: new kakao.maps.LatLng(37.531061, 126.722991)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(6ì¸?)</div>',
+                content: '<div>ºÎ¼Ó±â°ü(6Ãş)</div>',
                 latlng: new kakao.maps.LatLng(37.536637, 126.728633)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(3ì¸?)</div>',
+                content: '<div>ºÎ¼Ó±â°ü(3Ãş)</div>',
                 latlng: new kakao.maps.LatLng(37.461149, 126.681539)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(5ì¸?)</div>',
+                content: '<div>ºÎ¼Ó±â°ü(5Ãş)</div>',
                 latlng: new kakao.maps.LatLng(37.450530, 126.688589)
             },
             {
-                content: '<div>êµíšŒ ë°? ë¶??†ê¸°ê??(2, 4, 5ì¸?)</div>',
+                content: '<div>±³È¸ ¹× ºÎ¼Ó±â°ü(2, 4, 5Ãş)</div>',
                 latlng: new kakao.maps.LatLng(37.457111, 126.691793)
             },
             {
-                content: '<div>ë¶??†ê¸°ê??(2ì¸?)</div>',
+                content: '<div>ºÎ¼Ó±â°ü(2Ãş)</div>',
                 latlng: new kakao.maps.LatLng(37.456864, 126.692375)
             }
         ];
@@ -157,11 +174,9 @@
                 map: map,
                 position: positions[i].latlng
             });
-
             var infowindow = new kakao.maps.InfoWindow({
                 content: positions[i].content
             });
-
             kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
             kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
         }*/
@@ -185,32 +200,51 @@
 
         //alert(keyword);
 
-        var success = false;
-
-        removeMarker();
-
-        // ¿©±â¼­ keyword º¯¼ö °Ë»ç
-         if (keyword == 'ÀÎÃµ') {
-             showMarker(positions_1);
-             success = true;
-         }
-        // else if (¼­¿ï) {
-        //     showMarker(positions_¼­¿ï);
-        // }
-        
-        if (!success) {
-            alert('Search is wrong.');
+        if (!keyword.replace(/^\s+|\s+$/g, '')) {
+            alert('ÁÖ¼Ò¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä!');
+            return false;
         }
+        
+        // removeMarker();
+        
+
+        // Å°¿öµå °Ë»ç
+        if (keyword == 'ÀÎÃµ' || keyword == 'ÀÎÃµ±¤¿ª½Ã') {
+            // map.setLevel(map.getLevel() - 5);
+            // displayMap_1();
+            var moveLatLon = new kakao.maps.LatLng(37.455868, 126.705551);
+            map.panTo(moveLatLon);
+            showMarker(positions_1);
+            map.setLevel(map.getLevel() - 5);
+        }
+        // else if (seoul) {
+        //     showMarker(positions_2);
+        // }
+        else
+            alert("°Ë»ö °á°ú°¡ ¾ø½À´Ï´Ù!");
+            return false; 
     }
 
     function removeMarker() {
-        for ( var i = 0; i < markers.length; i++ ) {
+        for (var i = 0; i < markers.length; i++) {
             markers[i].setMap(null);
         }   
         markers = [];
+        map.setLevel(map.getLevel() + 5);
     }
 
+    /*function displayMap_1() {
+            var point = new kakao.maps.LatLng(37.455868, 126.705551);
+            var bounds = new kakao.maps.LatLngBounds();
+            bounds.extend(points);
+            map.setBounds(bounds);
+    }*/
+
     function showMarker(searchedPosArr) {
+       // map.setLevel(map.getLevel() - 5);
+
+        removeMarker();
+
         for (var i = 0; i < searchedPosArr.length; i++) {
             var marker = new kakao.maps.Marker({
                 map: map,
